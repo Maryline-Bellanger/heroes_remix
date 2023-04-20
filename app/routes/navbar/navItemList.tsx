@@ -1,6 +1,5 @@
-import { List } from '@mui/material'
-import React from 'react'
-import NavItem from './navItem'
+import { List } from "@mui/material";
+import NavItem from "./navItem";
 
 export default function navItemList() {
   return (

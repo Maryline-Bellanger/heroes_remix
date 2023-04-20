@@ -1,6 +1,5 @@
-import React from 'react'
-import NavItemList from './navItemList'
-import { Box, Drawer, Toolbar } from '@mui/material';
+import NavItemList from "./navItemList";
+import { Box, Drawer, Toolbar } from "@mui/material";
 
 const drawerWidth = 240;
 
@@ -13,7 +12,7 @@ export default function Navbar() {
             flexShrink: 0,
             '& .MuiDrawer-paper': {
                 width: drawerWidth,
-                boxSizing: 'border-box',
+                boxSizing: "border-box",
                 backgroundColor: "rgba(18,18,18,0.9)",
             },
                 }}

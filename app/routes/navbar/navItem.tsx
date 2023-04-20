@@ -1,11 +1,9 @@
-import { ListItemButton, ListItemText } from '@mui/material'
-import { NavLink } from '@remix-run/react'
-import React from 'react'
+import { ListItemButton, ListItemText } from "@mui/material";
+import { NavLink } from "@remix-run/react";
 
 interface INavItemProps {
     name: string;
     path: string;
-
 }
 
 export default function NavItem({name, path}: INavItemProps) {
