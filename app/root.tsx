@@ -12,10 +12,10 @@ import Navbar from "./routes/navbar/navbar";
 export default function App() {
     const theme = createTheme({
         palette: {
-            secondary: {
+            primary: {
                 main: "#EF6C00",
             },
-            info: {
+            secondary: {
                 main: "#ED8C2D",
             }
         }

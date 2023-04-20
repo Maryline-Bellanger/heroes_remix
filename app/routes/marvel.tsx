@@ -2,11 +2,11 @@ import { json } from "@remix-run/node";
 import type { V2_MetaFunction} from "@remix-run/react";
 import { useLoaderData } from "@remix-run/react";
 import type { IHeroData } from "./hero/iHeroes";
-import dbHeroes from "../db/dbHeroes.json"
+import dbHeroes from "../db/dbHeroes.json";
 import { useState } from "react";
-import { Box, AppBar, Toolbar, TextField, Grid, InputAdornment } from "@mui/material";
+import { Box, Grid } from "@mui/material";
 import HeroCard from "./hero/heroCard";
-import { Search } from "@mui/icons-material";
+import SearchBar from "./searchbar/searchbar";
 
 export const meta: V2_MetaFunction = () => {
     return [{ title: "Heroes App" }];
@@ -16,16 +16,11 @@ export const loader = async () => {
     return json(dbHeroes.heroes);
   };
 
-const drawerWidth = 240;
 
-function HeroesMarvel() {
+  export default  function HeroesMarvel() {
     const data = useLoaderData<typeof loader>();
 
     const [inputText, setInputText] = useState("");
-    let inputHandler = (e: { target: { value: string; }; }) => {
-        let lowerCase = e.target.value.toLowerCase();
-        setInputText(lowerCase);
-    };
 
     const filteredData = data.filter((el: { name: string; }) => {
         if (inputText === "") {
@@ -37,33 +32,7 @@ function HeroesMarvel() {
 
     return (
         <Box>
-            <AppBar
-                position="fixed"
-                sx={{
-                    width: { sm: `calc(100% - ${drawerWidth}px)` },
-                    ml: { sm: `${drawerWidth}px` },
-                    backgroundColor: "rgba(18,18,18,0.9)",
-                }}>
-                    <Toolbar>
-                        <TextField
-                            id="outlined-basic"
-                            onChange={inputHandler}
-                            variant="outlined"
-                            placeholder="Search"
-                            size="small"
-                            color='secondary'
-                            sx={{ backgroundColor: "rgba(255, 255, 255, 0.90)", borderRadius: 1 }}
-                            InputProps={{
-                                startAdornment: (
-                                    <InputAdornment position="start">
-                                        <Search />
-                                    </InputAdornment>
-                                )
-                            }}
-                        />
-                    </Toolbar>
-                </AppBar>
-        
+            <SearchBar setInputText={setInputText} />
             <Box component="main" style={{
                 display: "flex",
                 justifyContent: "center",
@@ -92,5 +61,3 @@ function HeroesMarvel() {
         </Box>
     )
 }
-
-export default HeroesMarvel

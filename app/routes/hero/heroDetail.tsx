@@ -1,7 +1,6 @@
 import { useState } from "react";
 import type { IHeroData } from "./iHeroes";
-import type {
-    DialogProps} from "@mui/material";
+import type { DialogProps } from "@mui/material";
 import {
     Card,
     CardActions,
@@ -37,7 +36,7 @@ export default function HeroDetail({ hero }: IHeroDetailsProps) {
             <Button
                 size="small"
                 onClick={handleClickOpen("paper")}
-                color="secondary"
+                color="primary"
             >
                 Détail
             </Button>
@@ -68,13 +67,13 @@ export default function HeroDetail({ hero }: IHeroDetailsProps) {
                             </Typography>
                             <Typography
                                 textAlign="center"
-                                color="text.secondary"
+                                color="text.primary"
                             >
                                 Genre : {hero?.gender} - Race : {hero?.race}
                             </Typography>
                             <Typography
                                 textAlign="center"
-                                color="text.secondary"
+                                color="text.primary"
                             >
                                 Taille : {hero?.height} - Poids : {hero?.weight}
                             </Typography>
@@ -83,7 +82,7 @@ export default function HeroDetail({ hero }: IHeroDetailsProps) {
                             </Typography>
                             <Typography
                                 textAlign="start"
-                                color="text.secondary"
+                                color="text.primary"
                             >
                                 Vitesse :
                                 <Typography
@@ -102,14 +101,14 @@ export default function HeroDetail({ hero }: IHeroDetailsProps) {
                                             borderRadius: 3,
                                             marginRight: 2,
                                         }}
-                                        color="info"
+                                        color="secondary"
                                     />
                                     {hero?.speed}
                                 </Typography>
                             </Typography>
                             <Typography
                                 textAlign="start"
-                                color="text.secondary"
+                                color="text.primary"
                             >
                                 Force :
                                 <Typography
@@ -128,14 +127,14 @@ export default function HeroDetail({ hero }: IHeroDetailsProps) {
                                             borderRadius: 3,
                                             marginRight: 2,
                                         }}
-                                        color="info"
+                                        color="secondary"
                                     />
                                     {hero?.power}
                                 </Typography>
                             </Typography>
                             <Typography
                                 textAlign="start"
-                                color="text.secondary"
+                                color="text.primary"
                             >
                                 Endurance :
                                 <Typography
@@ -154,7 +153,7 @@ export default function HeroDetail({ hero }: IHeroDetailsProps) {
                                             borderRadius: 3,
                                             marginRight: 2,
                                         }}
-                                        color="info"
+                                        color="secondary"
                                     />
                                     {hero?.stamina}
                                 </Typography>
@@ -164,7 +163,7 @@ export default function HeroDetail({ hero }: IHeroDetailsProps) {
                             <Button
                                 size="small"
                                 onClick={handleClose}
-                                color="secondary"
+                                color="primary"
                             >
                                 Retour
                             </Button>
