@@ -9,12 +9,20 @@ export default function navItemList() {
             path="/"
         />
         <NavItem
-            name="Héros Marvel"
+            name="Les héros Marvel"
             path="/marvel"
         />
         <NavItem
-            name="Héroïnes"
+            name="Les héroïnes"
             path="/heroines"
+        />
+        <NavItem
+            name="Les héros"
+            path="/heroes"
+        />
+        <NavItem
+            name="Les héros endurants"
+            path="/stamina"
         />
     </List>
   )
