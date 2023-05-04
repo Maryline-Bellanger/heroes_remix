@@ -3,9 +3,9 @@ import type { V2_MetaFunction} from "@remix-run/react";
 import { useLoaderData } from "@remix-run/react";
 import type { IHeroData } from "./hero/iHeroes";
 import dbHeroes from "../db/dbHeroes.json";
-import { useState } from "react";
-import { Box, Grid } from "@mui/material";
+import { Grid } from "@mui/material";
 import HeroCard from "./hero/heroCard";
+import { useState } from "react";
 import SearchBar from "./searchbar/searchbar";
 
 export const meta: V2_MetaFunction = () => {
@@ -31,33 +31,25 @@ export const loader = async () => {
     })
 
     return (
-        <Box>
+        <>
             <SearchBar setInputText={setInputText} />
-            <Box component="main" style={{
-                display: "flex",
-                justifyContent: "center",
-                flexDirection: "column",
-                paddingLeft: 240,
-                paddingTop: 100,
-            }}>
-                <Grid
-                    container
-                    justifyContent="space-evenly"
-                    padding={2}
-                    columns={{ xs: 4, sm: 8, md: 12 }}
-                >
-                    {filteredData
-                    .sort(function (a: { name: string; }, b: { name: any; }) {
-                        return a.name.localeCompare(b.name);
-                    })
-                    .filter((hero: { marvel: boolean; }) => hero.marvel === true)
-                    .map((hero: IHeroData) => (
-                        <Grid key={hero.id} paddingY={2}>
-                            <HeroCard hero={hero} />
-                        </Grid>))
-                    }
-                </Grid>
-            </Box>
-        </Box>
+            <Grid
+                container
+                justifyContent="space-evenly"
+                padding={2}
+                columns={{ xs: 4, sm: 8, md: 12 }}
+            >
+                {filteredData
+                .sort(function (a: { name: string; }, b: { name: any; }) {
+                    return a.name.localeCompare(b.name);
+                })
+                .filter((hero: { marvel: boolean; }) => hero.marvel === true)
+                .map((hero: IHeroData) => (
+                    <Grid key={hero.id} paddingY={2}>
+                        <HeroCard hero={hero} />
+                    </Grid>))
+                }
+            </Grid>
+        </>
     )
 }
