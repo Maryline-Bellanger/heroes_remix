@@ -3,9 +3,9 @@ import type { V2_MetaFunction} from "@remix-run/react";
 import { useLoaderData } from "@remix-run/react";
 import type { IHeroData } from "./hero/iHeroes";
 import dbHeroes from "../db/dbHeroes.json";
-import { useState } from "react";
-import { Box, Grid } from "@mui/material";
+import { Grid } from "@mui/material";
 import HeroCard from "./hero/heroCard";
+import { useState } from "react";
 import SearchBar from "./searchbar/searchbar";
 
 export const meta: V2_MetaFunction = () => {
@@ -18,7 +18,6 @@ export const loader = async () => {
 
 export default function Heroes() {
     const data = useLoaderData<typeof loader>();
-
     const [inputText, setInputText] = useState("");
 
     const filteredData = data.filter((el: { name: string; }) => {
@@ -28,18 +27,10 @@ export default function Heroes() {
             return el.name.toLowerCase().includes(inputText)
         }
     })
-
-    return (
-    <Box>
-        <SearchBar setInputText={setInputText} />
     
-        <Box component="main" style={{
-            display: "flex",
-            justifyContent: "center",
-            flexDirection: "column",
-            paddingLeft: 240,
-            paddingTop: 100,
-        }}>
+    return (
+        <>
+            <SearchBar setInputText={setInputText} />
             <Grid
                 container
                 justifyContent="space-evenly"
@@ -57,7 +48,6 @@ export default function Heroes() {
                     </Grid>))
                 }
             </Grid>
-        </Box>
-    </Box>
-  )
+        </>
+    );
 }

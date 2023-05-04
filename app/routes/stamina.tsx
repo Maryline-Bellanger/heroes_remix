@@ -3,9 +3,9 @@ import type { V2_MetaFunction} from "@remix-run/react";
 import { useLoaderData } from "@remix-run/react";
 import type { IHeroData } from "./hero/iHeroes";
 import dbHeroes from "../db/dbHeroes.json";
-import { useState } from "react";
-import { Box, Grid } from "@mui/material";
+import { Grid } from "@mui/material";
 import HeroCard from "./hero/heroCard";
+import { useState } from "react";
 import SearchBar from "./searchbar/searchbar";
 
 export const meta: V2_MetaFunction = () => {
@@ -18,7 +18,6 @@ export const loader = async () => {
 
 export default function Stamina() {
     const data = useLoaderData<typeof loader>();
-
     const [inputText, setInputText] = useState("");
 
     const filteredData = data.filter((el: { name: string; }) => {
@@ -28,36 +27,27 @@ export default function Stamina() {
             return el.name.toLowerCase().includes(inputText)
         }
     })
-
-    return (
-    <Box>
-        <SearchBar setInputText={setInputText} />
     
-        <Box component="main" style={{
-            display: "flex",
-            justifyContent: "center",
-            flexDirection: "column",
-            paddingLeft: 240,
-            paddingTop: 100,
-        }}>
-            <Grid
-                container
-                justifyContent="space-evenly"
-                padding={2}
-                columns={{ xs: 4, sm: 8, md: 12 }}
-            >
-                {filteredData
-                .sort(function (a: { name: string; }, b: { name: any; }) {
-                    return a.name.localeCompare(b.name);
-                })
-                .filter((hero: { stamina: number; }) => hero.stamina > 80)
-                .map((hero: IHeroData) => (
-                    <Grid key={hero.id} paddingY={2}>
-                        <HeroCard hero={hero} />
-                    </Grid>))
-                }
-            </Grid>
-        </Box>
-    </Box>
+    return (
+    <>
+        <SearchBar setInputText={setInputText} />
+        <Grid
+            container
+            justifyContent="space-evenly"
+            padding={2}
+            columns={{ xs: 4, sm: 8, md: 12 }}
+        >
+            {filteredData
+            .sort(function (a: { name: string; }, b: { name: any; }) {
+                return a.name.localeCompare(b.name);
+            })
+            .filter((hero: { stamina: number; }) => hero.stamina > 80)
+            .map((hero: IHeroData) => (
+                <Grid key={hero.id} paddingY={2}>
+                    <HeroCard hero={hero} />
+                </Grid>))
+            }
+        </Grid>
+    </>
   )
 }
